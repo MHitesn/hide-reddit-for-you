@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="pages.css" />
+  <style>
+    body { width: 300px; background: var(--card); }
+    main { padding: 16px; display: grid; gap: 14px; }
+    h1 { font-size: 1rem; }
+    .status { font-size: 0.9rem; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 0; }
+    .donate p { font-size: 0.85rem; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">
+      <img src="icons/icon32.png" width="32" height="32" alt="" />
+      <h1>Hide "For You" for Reddit</h1>
+    </div>
+    <p class="status muted">Active on reddit.com. The "For You" tab stays hidden, and there's nothing to set up.</p>
+    <hr />
+    <div class="donate">
+      <p class="muted">Find it useful? Support the developer:</p>
+      <form action="https://www.paypal.com/ncp/payment/M6H8UYBTBDUVN" method="post" target="_blank"
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-M6H8UYBTBDUVN" type="submit" value="Donate" />
+        <img class="pp-card-logos" src="https://www.paypalobjects.com/images/Debit_Credit.svg" alt="cards" />
+        <section class="pp-powered">Powered by
+          <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal"
+               style="height:0.875rem;vertical-align:middle;" />
+        </section>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
