@@ -4,14 +4,22 @@
 // whole tab slot, so no empty gap is left behind.
 
 const LABEL = /^for\s*you$/i;
-const TAB_SELECTOR =
-  'a, button, [role="tab"], li, faceplate-tracker, faceplate-tab, shreddit-tab';
+// Only real tab controls. Plain links/buttons count only inside a tab bar or
+// nav, so posts, comments and links that merely say "for you" are never touched.
+const TAB_SELECTOR = '[role="tab"], faceplate-tab, shreddit-tab';
+const NAV_ITEM_SELECTOR =
+  ':is([role="tablist"], nav, header) :is(a, button, li, faceplate-tracker)';
 const STOP = new Set(["BODY", "HTML", "MAIN", "HEADER", "NAV", "UL", "OL"]);
 
 let switchedAway = false;
 
-// If we land directly on a For You feed URL, send us to the normal home feed.
-if (/for-?_?you/i.test(location.pathname + location.search)) {
+// If the home page opens directly on the For You feed (e.g. /?feed=foryou),
+// send us to the normal home feed. Only the home page is checked, so posts
+// whose titles contain "for you" are never redirected.
+if (
+  (location.pathname === "/" || location.pathname === "") &&
+  /for[-_]?you/i.test(location.search)
+) {
   location.replace("https://www.reddit.com/");
 }
 
@@ -110,7 +118,7 @@ function fixTablist(tab) {
 function hideForYou() {
   let changed = false;
   for (const root of allRoots()) {
-    for (const el of root.querySelectorAll(TAB_SELECTOR)) {
+    for (const el of root.querySelectorAll(`${TAB_SELECTOR}, ${NAV_ITEM_SELECTOR}`)) {
       if (el.dataset.hfyHidden || !LABEL.test(labelOf(el))) continue;
 
       const target = tabSlot(el);
@@ -130,7 +138,7 @@ function hideForYou() {
         const container = parentOf(target);
         const other =
           container &&
-          [...container.querySelectorAll(TAB_SELECTOR)].find(
+          [...container.querySelectorAll(`${TAB_SELECTOR}, ${NAV_ITEM_SELECTOR}`)].find(
             (t) => t !== el && !target.contains(t) && t.offsetParent !== null
           );
         if (other) {
