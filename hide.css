@@ -1,6 +1,0 @@
-/* Fast path: hide obvious "For You" links before the page even paints. */
-a[href*="foryou" i],
-a[href*="for-you" i],
-a[href*="for_you" i] {
-  display: none !important;
-}
