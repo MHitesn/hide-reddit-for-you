@@ -6,17 +6,15 @@ A tiny Chrome extension that hides the **"For You"** tab Reddit added to the hom
 - If Reddit opens on the "For You" feed, switches you to your regular feed
 - Needs no permissions, collects no data, and runs only on reddit.com
 
-<img src="docs/welcome.png" alt="Welcome screen" width="480">
-
 ## Install
 
 Chrome only installs Web Store extensions with one click, so this one takes about a minute to set up by hand:
 
-1. **[Download the latest release](../../releases/latest)**. Get the `hide-reddit-for-you-vX.Y.Z.zip` file under *Assets*.
-2. Unzip it. You'll get a folder called `hide-reddit-for-you`. Move it somewhere permanent, such as your Documents folder. **Don't delete it**, because Chrome loads the extension from this folder.
+1. **[Open the latest release](../../releases/latest)** and download **Source code (zip)** under *Assets*.
+2. Unzip it. You'll get a folder called something like `hide-reddit-for-you-1.1.1`. Move it somewhere permanent, such as your Documents folder. **Don't delete it**, because Chrome loads the extension from this folder.
 3. Open `chrome://extensions` in Chrome.
 4. Turn on **Developer mode** (toggle in the top-right corner).
-5. Click **Load unpacked** and select the `hide-reddit-for-you` folder.
+5. Click **Load unpacked** and select that folder.
 6. Refresh reddit.com. The "For You" tab is gone.
 
 It also works in other Chromium browsers, such as Edge, Brave, Arc, Opera and Vivaldi. The extensions page is at `edge://extensions`, `brave://extensions` and so on.
